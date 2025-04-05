@@ -1,24 +1,24 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap("ScavTrap") {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called ScavTrap" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
-    std::cout << "Constructor with name called for " << name << std::endl;
+    std::cout << "Constructor with name called ScavTrap for " << name << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Copy constructor called ScavTrap" << std::endl;
     *this = copy;
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called ScavTrap" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &copy) {
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Copy assignment operator called ScavTrap" << std::endl;
     if (this != &copy) {
         ClapTrap::operator=(copy);
     }
