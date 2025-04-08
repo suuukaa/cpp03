@@ -1,21 +1,21 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("ClapTrap"), hit_point(10), energy_point(10), attack_dammage(0)
+ClapTrap::ClapTrap() : name("default"), hit_point(10), energy_point(10), attack_dammage(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called ClapTrap" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy){
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Copy constructor called ClapTrap" << std::endl;
     *this = copy;
 }
 
 ClapTrap::~ClapTrap(){
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called ClapTrap" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &copy){
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Copy assignment operator called ClapTrap" << std::endl;
     if (this != &copy)
     {
         name = copy.name;
@@ -27,25 +27,29 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &copy){
 }
 
 void ClapTrap::attack(const std::string& target){
-    if (hit_point > 0 || energy_point > 0){
+    if (hit_point > 0 && energy_point > 0){
         std::cout << "ClapTrap " << name << " attacks " << target << ", causing "
         << attack_dammage << " point of damage " << std::endl;
         energy_point--;
+    }else {
+        std::cout << "ClapTrap " << name << " doesn't have enough energy or hit points to attack." << std::endl;
     }
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
     hit_point -= amount;
     if (hit_point < 0) hit_point = 0;
-    std::cout << "ClapTrap " << name << " takes " << amount 
+    std::cout << name << " takes " << amount 
     << " points of damage! HP is now " << hit_point << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-    hit_point += amount;
-    if (hit_point >= 0 || energy_point >= 0){
-        std::cout << "ClapTrap " << name << " is repaired by " << amount 
+    if (hit_point > 0 && energy_point > 0){
+        hit_point += amount;
+        std::cout << name << " is repaired by " << amount 
         << " points! HP is now " << hit_point << std::endl;
         energy_point--;
+    } else {
+        std::cout << name << " doesn't have enough energy or hit points to repaired." << std::endl;
     }
 }

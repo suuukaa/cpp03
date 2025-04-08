@@ -1,14 +1,18 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap("FragTrap"){
+FragTrap::FragTrap() : ClapTrap(){
 
     hit_point = 100;
     energy_point = 100;
     attack_dammage = 30;
+    name = "default";
     std::cout << "Default constructor called FragTrap" << std::endl;
 }
 
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
+    hit_point = 100;
+    energy_point = 100;
+    attack_dammage = 30;
     std::cout << "Constructor with name called FragTrap for " << name << std::endl;
 }
 
@@ -40,5 +44,5 @@ void FragTrap::attack(const std::string& target) {
 }
 
 void FragTrap::highFivesGuys(void){
-    std::cout << " positive high-fives" << std::endl;
+    std::cout << "Positive high-fives" << std::endl;
 }
